@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<script>
+function launch() {
+                var cn = document.getElementById("incname").value;
+                var ci = document.getElementById("incimage").value;
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("crun").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://15.207.51.200:3000/run?cname=" + cn + "&cimage=" + ci );
+  alert("Container " + cn + " Launched Successfully...");
+  xhttp.send();
+
+}
+
+
+
+function lwps() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("cps").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://15.207.51.200:3000/ps");
+  xhttp.send();
+}
+
+function listImages() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("cps").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://15.207.51.200:3000/listimages");
+  xhttp.send();
+}
+
+
+function deleteContainer() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("cps").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://15.207.51.200:3000/deleteall");
+  xhttp.send();
+}
+
+function deleteOne() {
+                var cn = document.getElementById("rmcname").value;
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("cps").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://15.207.51.200:3000/deleteone?cnname=" + cn );
+  alert("Container " + cn + " removed Successfully...")
+  
+  xhttp.send();
+  
+}
+
+
+function execContainer() {
+                var cn = document.getElementById("exos").value;
+                var cc = document.getElementById("excommand").value;
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("cps").innerHTML =
+      this.responseText;
+    }
+  };
+  
+  xhttp.open("GET", "http://15.207.51.200:3000/execute?cname=" + cn + "&command=" + cc );
+  xhttp.send();
+}
+
+
+function startContainer() {
+                var cn = document.getElementById("startstop").value;
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("cps").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://15.207.51.200:3000/start?sname=" + cn );
+  //alert("Container " + cn + " Started Successfully...");
+  xhttp.send();
+
+}
+
+
+function stopContainer() {
+                var cn = document.getElementById("startstop").value;
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("cps").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://15.207.51.200:3000/stop?sname=" + cn );
+  //alert("Container " + cn + " Stopped Successfully...");
+
+  xhttp.send();
+
+}
+
+function inspect() {
+                var cn = document.getElementById("startstop").value;
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("cps").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://15.207.51.200:3000/inspect?sname=" + cn );
+  //alert("Container " + cn + " Started Successfully...");
+  xhttp.send();
+
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+<head>i
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:25px;}
+
+.w3-half img:hover{opacity:1}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+div {
+    margin-right: unset;
+    
+    margin-top: 1%;
+    margin-left: 60%;
+}
+div#cps{
+border: 2px solid blue;
+margin-top: 1%;
+margin-right: 80%;
+width: 66% ;
+height: 450px;
+margin-left: 32%;
+background-color: white;
+overflow: auto;
+}
+
+h1{
+    text-align: center;
+/*    color: #b393d3;
+    background-size: 20px;
+  text-shadow: 2px 2px 5px red;
+    background-color: Aliceblue;*/
+    font-size: 40px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  color: #2B1B17;
+  text-transform: uppercase;
+    position: relative;
+    margin-top: -30px;
+    text-shadow: 1px 1px 0px #957dad,
+               1px 2px 0px #957dad,
+               1px 3px 0px #957dad,
+               1px 4px 0px #957dad,
+               1px 5px 0px #957dad,
+               1px 6px 0px #957dad,
+               1px 10px 5px rgba(16, 16, 16, 0.5),
+               1px 15px 10px rgba(16, 16, 16, 0.4),
+               1px 20px 30px rgba(16, 16, 16, 0.3),
+               1px 25px 50px rgba(16, 16, 16, 0.2);
+    
+}
+
+im.value{
+	background: transparent;
+	border: none;
+}
+
+
+
+</style>
+</head>
+<body bgcolor="sky blue">
+<h1>Docker Web App</h1>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-Sandstone w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:30%;font-weight:bold; background-color:#F8B88B;" id="mySidebar"><br>
+    <h2 style="text-align:center;">Options</h2>
+    <hr>
+    <Button onclick="lwps()">List Container</Button>
+    <button  onclick="listImages()">List Images</button>
+    <br>
+    <br>
+<im>  <input name="cname" id="incname" placeholder="Container Name"></im>
+    <select name="cimage" id="incimage" placeholder="Image Name"> 
+    <option> ubuntu </option>
+    <option> centos </option>
+    <option> vimal13/apache-webserver-php </option>
+    </select>
+    <br>
+    <button onclick="launch()" >Launch Container</button>
+    <br>
+    <br>
+<im>    <input name="sname" id="startstop" placeholder="Container Name"></im>
+    <button onclick="startContainer()">Start Container</button>
+    <button onclick="stopContainer()">Stop Container</button><br>
+    <button onclick="inspect()">Inspect Container</button>
+    <br>
+    <br>
+<im>    <input name="cnname" id="rmcname" placeholder="Container Name"></im>
+    <button onclick="deleteOne()">Remove Container</button>
+    <button onclick="deleteContainer()">Remove All </button>
+    <br><br>
+<im>    <input name="cname" id="exos" placeholder="Container Name"></im>
+<im>    <input name="command" id="excommand" placeholder="Command"></im>
+    <button onclick="execContainer()">Execute Container</button>
+    </nav>
+    <div>
+       <B> OUTPUT</B> </div>
+      <div id="cps"> </div>

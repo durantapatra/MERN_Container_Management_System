@@ -1,0 +1,125 @@
+<script>
+function lw() {
+		var cn = document.getElementById("incname").value;
+		var ci = document.getElementById("incimage").value;
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("crun").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://3.6.36.251:3000/run?cname=" + cn + "&cimage=" + ci );
+  xhttp.send();
+}
+
+
+
+function lwps() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("cps").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://3.6.36.251:3000/ps");
+  xhttp.send();
+}
+
+
+
+function listImages() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("cps").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://3.6.36.251:3000/listimages");
+  xhttp.send();
+}
+
+
+function deleteContainer() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("cps").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://3.6.36.251:3000/deletec");
+  xhttp.send();
+}
+
+function deleteOne() {
+		var cn = document.getElementById("rmcname").value;
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("cps").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://3.6.36.251:3000/deleteone?cnname=" + cn );
+  xhttp.send();
+}
+
+
+function execContainer() {
+                var cn = document.getElementById("exos").value;
+                var cc = document.getElementById("excommand").value;
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("cps").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://3.6.36.251:3000/execute?cname=" + cn + "&command=" + cc );
+  xhttp.send();
+}
+
+
+	
+</script>
+
+<h1> Launch Container </h1>
+
+Name <input name="cname" id="incname" />
+<br />
+Image Name
+<select name="cimage" id="incimage">
+	<option>centos</option>
+	<option>ubuntu</option>
+	
+</select>
+<br />
+
+
+
+<div id="crun"></div>
+<button onclick="lw()">Click to Launch</button>
+<button onclick="lwps()">List all Containers</button>
+<button onclick="listImages()">List Images</button>
+<br />
+Container Name <input name="cnname" id="rmcname" /><br />
+<button onclick="start()">Start Container</button>
+<button onclick="stop()">Stop Container</button>
+<button onclick="deleteOne()">Delete Container</button>
+<button onclick="deleteContainer()"> Delete all Containers </button>
+<br />
+OS Name: <input name="cname" id="exos">
+Command: <input name="command" id="excommand"> 
+<button onclick="execContainer()"> Execute </button><br />
+<!--Image <select name="coimage" id="incoimage">
+	<script>listImages()</script> -->
+<div id="cps">		</div>
+
+Image <select name="coimage" id="incoimage">
+        <script>listImages()</script>
